@@ -1,0 +1,40 @@
+---
+version: '3'
+services:
+  presto:
+    build: .
+    links:
+      - mongodb
+      - mysql
+    depends_on:
+      - mongodb
+      - mysql
+    ports:
+      - "8080:8080"
+
+  mysql:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 'mysql'
+      MYSQL_USER: 'presto'
+      MYSQL_PASSWORD: 'mysql'
+    ports:
+      - "3306:3306"
+
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  jupyter:
+    build: jupyter
+    links:
+      - mongodb
+      - mysql
+    ports: 
+      - "8888:8888"
+
+    depends_on:
+      - presto
+
+    command: start-notebook.sh --NotebookApp.password='sha1:2017f6d8a65d:4f2115202d4cd8c081f1c135bc2b41292bcb4ec4'
