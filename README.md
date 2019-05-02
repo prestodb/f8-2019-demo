@@ -60,3 +60,11 @@ To run Presto in a distributed way, you will create a new instance with
 - http://tinyurl.com/presto-paper
 - https://prestodb.io/resources.html#libraries
 - https://jupyter.org
+
+## Contributing
+
+See the [CONTRIBUTING](CONTRIBUTING.md) file for how to help out.
+
+## License
+
+f8-2019-demo is Apache 2.0 licensed, as found in the LICENSE file.
